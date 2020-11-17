@@ -42,3 +42,16 @@ code {
   width: auto;
   padding: 2% 0;
 }
+
+.joke {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.joke_item {
+  border: 5px solid pink;
+  margin: 3%;
+  padding: 2%;
+}

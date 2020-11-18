@@ -10,7 +10,7 @@ const CityWeathers = () => {
     function getCityWeather(city) {
         setLoading(true);
         setError(false);
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`)
             .then(res => res.json())
             .then(res => {
                 if(res.cod === "404") {

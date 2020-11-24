@@ -37,13 +37,13 @@ const CityWeathers = () => {
 
     return (
         <div className="container">
-            <h2>Weather</h2>
+            <h2 className="title">Weather</h2>
             <SearchCity handleClick={getCityWeather} />
             {isLoading && (
                 <p>Loading..</p>
             )}
             {error && (
-                <p>Error! City weather information couldn't fetch. Try again.</p>
+                <p className="error">Error! City weather information couldn't fetch. Try again.</p>
             )}
             {!error && !isLoading && cityWeathers.length ? (
                 cityWeathers.map((cityWeather, index) => (
@@ -63,7 +63,7 @@ const CityWeathers = () => {
                 ))
                 
             ) : (
-                    <p>Please write the city name!</p>
+                    <p className="notification">Please write the city name!</p>
                 )}
         </div>
     );

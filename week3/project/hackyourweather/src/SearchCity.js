@@ -14,13 +14,13 @@ const SearchCity = (props) => {
     }
 
     return (
-        <div className="search_form">
+        <form className="search_form" onSubmit={() => handleOnClick()}>
             <span className="icon">
                 <i className="fa fa-search" aria-hidden="true"></i>
             </span>
             <input type="text" placeholder="Search City" value={city} onChange={(event) => handleChange(event.target.value)} />
-            <button disabled={city.length === 0} onClick={() => handleOnClick()}>Search</button>
-        </div>
+            <button type="submit" disabled={city.length === 0} onClick={() => handleOnClick()}>Search</button>
+        </form>
     )
 }
 

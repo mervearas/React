@@ -1,10 +1,10 @@
 import React from 'react';
-import CityWeathers from './CityWeathers';
+import CityWeatherList from './CityWeatherList';
 
 function App() {
   console.log(process.env.REACT_APP_OPENWEATHERMAP_API_KEY);
   return (
-    <CityWeathers/>
+    <CityWeatherList/>
   )
 }
 

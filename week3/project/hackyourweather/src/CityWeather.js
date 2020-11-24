@@ -17,7 +17,7 @@ export default function CityWeather(props) {
     return (
         <div className="cityWeather">
             <h2>{cityName} , {countryName}</h2>
-            <img width={80} src={"http://openweathermap.org/img/w/" + icon + ".png"}/>
+            <img width={80} src={"http://openweathermap.org/img/w/" + icon + ".png"} alt={weatherMain}/>
             <h3>{weatherMain} <br /><span style={{ fontSize: "0.8rem" }}>{weatherDescription}</span></h3>
             <h5>min temp: {minTemp}</h5>
             <h5>max temp: {maxTemp}</h5>

@@ -1,5 +1,4 @@
-const DogPhoto = (props) => {
-    const {dogPhoto} = props;
+const DogPhoto = ({dogPhoto}) => {
     return(
         <img src={dogPhoto} alt="dog"/>
     )

@@ -6,11 +6,11 @@ import RandomJoke from './RandomJoke';
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <Friend/>
       <DogGallery/>
       <RandomJoke/>
-    </React.Fragment>
+    </>
   );
 }
 

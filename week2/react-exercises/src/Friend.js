@@ -9,12 +9,16 @@ const Friend = () => {
     const [isLoading, setLoading] = useState(false);
 
     async function getFriend() {
-        setLoading(true)
-        await fetch('https://www.randomuser.me/api?results=1')
-            .then(res => res.json())
-            .then(res => setFriend(res.results[0]))
-            .catch(err => setError(true))
-            .finally(() => setLoading(false))
+        setLoading(true);
+        try {
+            const response = await fetch('https://www.randomuser.me/api?results=1');
+            const data = await response.json();
+            setFriend(data.results[0]);
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setLoading(false);
+        }
     }
 
     return (

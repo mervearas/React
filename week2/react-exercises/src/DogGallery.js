@@ -8,13 +8,17 @@ const DogGallery = () => {
     const [isLoading, setLoading] = useState(false);
 
 
-    function getDogPhoto() {
+    async function getDogPhoto() {
         setLoading(true);
-        fetch('https://dog.ceo/api/breeds/image/random')
-            .then(res => res.json())
-            .then(res => setDogPhotos((prevState) => [...prevState, res.message]))
-            .catch(err => setError(true))
-            .finally(() => setLoading(false))
+        try {
+            const response = await fetch('https://dog.ceo/api/breeds/image/random');
+            const data = await response.json();
+            setDogPhotos((prevState) => [...prevState, data.message])
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setLoading(false);
+        }
     }
 
     return (

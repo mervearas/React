@@ -25,7 +25,7 @@ const CityWeathers = () => {
 
     return (
         <div className="container">
-            <h2>Weather</h2>
+            <h1>Weather</h1>
             <SearchCity handleClick={getCityWeather} />
             {isLoading && (
                 <p>Loading..</p>
@@ -33,16 +33,26 @@ const CityWeathers = () => {
             {error && (
                 <p>Error! City weather information couldn't fetch. Try again.</p>
             )}
-            {!error && !isLoading && cityWeather ? (
-                <CityWeather
-                    cityName={cityWeather.name}
-                    countryName={cityWeather.sys.country}
-                    weatherMain={cityWeather.weather[0].main}
-                    weatherDescription={cityWeather.weather[0].description}
-                    minTemp={cityWeather.main.temp_min}
-                    maxTemp={cityWeather.main.temp_max}
-                    lat={cityWeather.coord.lat}
-                    lon={cityWeather.coord.lon} />
+            {!error && !isLoading && cityWeather ? (() => {
+                const {
+                    name,
+                    sys,
+                    weather,
+                    main,
+                    coord
+                } = cityWeather;
+                return (
+                    <CityWeather
+                        cityName={name}
+                        countryName={sys.country}
+                        weatherMain={weather[0].main}
+                        weatherDescription={weather[0].description}
+                        minTemp={main.temp_min}
+                        maxTemp={main.temp_max}
+                        lat={coord.lat}
+                        lon={coord.lon} />
+                )
+            }
             ) : (
                     <p>Please write the city name!</p>
                 )}

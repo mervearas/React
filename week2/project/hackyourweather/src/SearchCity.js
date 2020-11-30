@@ -10,7 +10,7 @@ const SearchCity = (props) => {
     return (
         <div className="search_form">
             <span className="icon">
-                <i className="fa fa-search" aria-hidden="true"></i>
+                <i className="fa fa-search" aria-hidden="true"/>
             </span>
             <input type="text" placeholder="Search City" value={city} onChange={(event) => handleChange(event.target.value)} />
             <button onClick={() => handleClick(city)}>Search</button>

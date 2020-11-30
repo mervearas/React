@@ -19,6 +19,10 @@ code {
   margin: 2%;
 }
 
+.description {
+  font-size: 0.8rem;
+}
+
 .container {
   display: flex;
   flex-direction: column;

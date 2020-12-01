@@ -20,6 +20,7 @@ code {
   position: relative;
   border-radius: 10px;
   background-color: white;
+  text-decoration: none;
 }
 
 .cityWeather button {
@@ -92,4 +93,44 @@ code {
 
 .title, .notification, .error {
   color: white;
+}
+
+.city_weather_details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.city_weather_chart {
+  margin: 3% 0;
+  background-color: white;
+  width: 720px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.city_weather_chart h2 {
+  padding: 5%;
+  box-sizing: border-box;
+  background-color: tomato;
+}
+
+.city_weather_details .back_button {
+  padding: 1%;
+  font-size: 1.2rem;
+  width: 120px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.city_weather_details .back_button:hover {
+  background-color: gray;
+  color: white;
+  cursor: pointer;
 }

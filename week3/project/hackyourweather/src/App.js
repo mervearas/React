@@ -1,10 +1,16 @@
 import React from 'react';
 import CityWeatherList from './CityWeatherList';
+import CityWeatherDetails from './CityWeatherDetails';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-  console.log(process.env.REACT_APP_OPENWEATHERMAP_API_KEY);
   return (
-    <CityWeatherList/>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={CityWeatherList} />
+        <Route path="/:cityId" exact component={CityWeatherDetails} />
+      </Switch>
+    </Router>
   )
 }
 

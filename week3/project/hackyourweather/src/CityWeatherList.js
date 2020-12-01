@@ -7,20 +7,22 @@ const CityWeathers = () => {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    function getCityWeather(city) {
+    async function getCityWeather(city) {
         setLoading(true);
         setError(false);
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`)
-            .then(res => res.json())
-            .then(res => {
-                if(res.cod === "404") {
-                    setError(true);
-                } else {
-                    setCityWeathers((prevState) => [...prevState, res])
-                }
-            })
-            .catch(err => setError(true))
-            .finally(() => setLoading(false))
+        try {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`)
+            const data = await response.json();
+            if(data.cod === "404") {
+                setError(true);
+            } else {
+                setCityWeathers((prevState) => [...prevState, data]);
+            }
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setLoading(false);
+        }
     }
 
     function removeCity(key) {
@@ -46,22 +48,31 @@ const CityWeathers = () => {
                 <p className="error">Error! City weather information couldn't fetch. Try again.</p>
             )}
             {!error && !isLoading && cityWeathers.length ? (
-                cityWeathers.map((cityWeather, index) => (
-                    <CityWeather
-                    key={index}
-                    id={index}
-                    cityName={cityWeather.name}
-                    countryName={cityWeather.sys.country}
-                    weatherMain={cityWeather.weather[0].main}
-                    weatherDescription={cityWeather.weather[0].description}
-                    minTemp={cityWeather.main.temp_min}
-                    maxTemp={cityWeather.main.temp_max}
-                    lat={cityWeather.coord.lat}
-                    lon={cityWeather.coord.lon}
-                    icon={cityWeather.weather[0].icon}
-                    removeCity={removeCity} />
-                ))
-                
+                cityWeathers.map(cityWeather => {
+                    const {
+                        name,
+                        sys,
+                        weather,
+                        main,
+                        coord,
+                        id
+                    } = cityWeather;
+                    return (
+                        <CityWeather
+                            key={id}
+                            id={id}
+                            cityName={name}
+                            countryName={sys.country}
+                            weatherMain={weather[0].main}
+                            weatherDescription={weather[0].description}
+                            minTemp={main.temp_min}
+                            maxTemp={main.temp_max}
+                            lat={coord.lat}
+                            lon={coord.lon}
+                            icon={weather[0].icon}
+                            removeCity={removeCity} />
+                    )
+                })
             ) : (
                     <p className="notification">Please write the city name!</p>
                 )}

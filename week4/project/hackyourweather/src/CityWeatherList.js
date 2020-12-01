@@ -39,7 +39,7 @@ const CityWeathers = () => {
 
     return (
         <div className="container">
-            <h2 className="title">Weather</h2>
+            <h1 className="title">Weather</h1>
             <SearchCity handleClick={getCityWeather} />
             {isLoading && (
                 <p>Loading..</p>

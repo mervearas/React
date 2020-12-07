@@ -18,20 +18,16 @@ const CityWeathers = () => {
             } else {
                 setCityWeathers((prevState) => [...prevState, data]);
             }
-            setLoading(false);
         } catch (error) {
             setError(true);
+        } finally {
             setLoading(false);
         }
     }
 
     function removeCity(key) {
         const newCityWeathers = cityWeathers.filter((cityWeather, index) => {
-            if (index !== key) {
-                return true
-            } else {
-                return false
-            }
+            return index !== key ? true : false;
         })
 
         setCityWeathers(newCityWeathers)

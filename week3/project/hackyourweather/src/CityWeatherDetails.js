@@ -34,25 +34,25 @@ const CityWeatherDetails = () => {
                 })
                 setCityDetails(temp);
             }
-            setLoading(false);
         } catch (error) {
             setError(true);
+        } finally {
             setLoading(false);
         }
     }
 
     return (
         <div className="city_weather_details">
-            {/* {isLoading && (
+            {isLoading && (
                 <p>Loading..</p>
             )}
             {error && (
                 <p>Error. Data couldn't fetch!</p>
-            )} */}
+            )}
             {!isLoading && !error && cityDetails && (
                 <div className="city_weather_chart">
-                    <h2>5 days forecast</h2>
-                    <h1>{cityDetails[0].name},{cityDetails[0].country}</h1>
+                    <h1>5 days forecast</h1>
+                    <h2>{cityDetails[0].name},{cityDetails[0].country}</h2>
                     <AreaChart
                         width={700}
                         height={400}
